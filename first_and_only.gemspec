@@ -8,9 +8,23 @@ Gem::Specification.new do |spec|
   spec.version       = FirstAndOnly::VERSION
   spec.authors       = ["Mark Lorenz"]
   spec.email         = ["markjlorenz@dapplebeforedawn.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = <<-DESCR
+Get the first element from an enumerable, and assert that there is only one element to take.
+  DESCR
+  spec.summary       = <<-SUMMARY
+```
+[:just_one].first_and_only!  # => :just_one
+```
+
+```
+[].first_and_only!  # =>  0 (Enumerable::FirstAndOnly::LengthNotOne)
+```
+
+```
+[:one, :and_two].first_and_only!  # => 2 (Enumerable::FirstAndOnly::LengthNotOne)
+```
+  SUMMARY
+  spec.homepage      = "https://github.com/dapplebeforedawn/first-and-only-gem"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
