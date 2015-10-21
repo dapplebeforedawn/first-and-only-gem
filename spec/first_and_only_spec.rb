@@ -8,8 +8,10 @@ describe "Enumerable#first_and_only!" do
 
   shared_examples_for "it_is_empty" do
     specify do
-      expect { subject.first_and_only! }.to \
-        raise_error(Enumerable::FirstAndOnly::LengthNotOne, "0")
+      expect { subject.first_and_only! }.to raise_error(
+        Enumerable::FirstAndOnly::CountNotOne,
+        "Expected the count to be 1, but it was 0."
+      )
     end
   end
 
@@ -17,8 +19,10 @@ describe "Enumerable#first_and_only!" do
     specify do
       fail "bad example" if subject.count < 2
 
-      expect { subject.first_and_only! }.to \
-        raise_error(Enumerable::FirstAndOnly::LengthNotOne, subject.count.to_s)
+      expect { subject.first_and_only! }.to raise_error(
+        Enumerable::FirstAndOnly::CountNotOne,
+        "Expected the count to be 1, but it was #{subject.count}."
+      )
     end
   end
 

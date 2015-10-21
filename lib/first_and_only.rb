@@ -2,11 +2,15 @@ require "first_and_only/version"
 
 module Enumerable
   def first_and_only!
-    fail(FirstAndOnly::LengthNotOne, count) if first(2).count != 1
+    fail(FirstAndOnly::CountNotOne.new count) if first(2).count != 1
     first
   end
 
   module FirstAndOnly
-    LengthNotOne = Class.new(StandardError)
+    class CountNotOne < StandardError
+      def initialize(count)
+        super("Expected the count to be 1, but it was #{count}.")
+      end
+    end
   end
 end

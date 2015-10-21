@@ -7,11 +7,11 @@ Get the first element from an enumerable, and assert that there is only one elem
 ```
 
 ```
-[].first_and_only!  # =>  0 (Enumerable::FirstAndOnly::LengthNotOne)
+[].first_and_only!  # =>  0 (Enumerable::FirstAndOnly::CountNotOne)
 ```
 
 ```
-[:one, :and_two].first_and_only!  # => 2 (Enumerable::FirstAndOnly::LengthNotOne)
+[:one, :and_two].first_and_only!  # => 2 (Enumerable::FirstAndOnly::CountNotOne)
 ```
 
 ## Why?
