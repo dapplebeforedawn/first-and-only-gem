@@ -17,11 +17,11 @@ Get the first element from an enumerable, and assert that there is only one elem
 ```
 
 ```
-[].first_and_only!  # =>  0 (Enumerable::FirstAndOnly::LengthNotOne)
+[].first_and_only!  # =>  0 (Enumerable::FirstAndOnly::CountNotOne)
 ```
 
 ```
-[:one, :and_two].first_and_only!  # => 2 (Enumerable::FirstAndOnly::LengthNotOne)
+[:one, :and_two].first_and_only!  # => 2 (Enumerable::FirstAndOnly::CountNotOne)
 ```
   SUMMARY
   spec.homepage      = "https://github.com/dapplebeforedawn/first-and-only-gem"
@@ -35,5 +35,5 @@ Get the first element from an enumerable, and assert that there is only one elem
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 2.14.1"
-  spec.add_development_dependency "pry-plus"
+  spec.add_development_dependency "pry-byebug"
 end
