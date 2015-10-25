@@ -35,5 +35,4 @@ Get the first element from an enumerable, and assert that there is only one elem
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 2.14.1"
-  spec.add_development_dependency "pry-byebug"
 end
