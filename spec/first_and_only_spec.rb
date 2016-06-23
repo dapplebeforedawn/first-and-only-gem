@@ -26,6 +26,16 @@ describe "Enumerable#first_and_only!" do
     end
   end
 
+  describe "backwards compatibility with CountNotOne error class" do
+    specify do
+      expect(Enumerable::FirstAndOnly::CountZero).to be < Enumerable::FirstAndOnly::CountNotOne
+    end
+
+    specify do
+      expect(Enumerable::FirstAndOnly::CountGreaterThanOne).to be < Enumerable::FirstAndOnly::CountNotOne
+    end
+  end
+
   describe "an array" do
 
     context "with one element" do
