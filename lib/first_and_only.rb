@@ -2,15 +2,22 @@ require "first_and_only/version"
 
 module Enumerable
   def first_and_only!
-    fail(FirstAndOnly::CountNotOne.new) if first(2).count != 1
-    first
+    case first(2).count
+    when 0
+      fail FirstAndOnly::CountZero, FirstAndOnly::COUNT_ZERO_ERROR_MESSAGE
+    when 1
+      first
+    else
+      fail FirstAndOnly::CountGreaterThanOne, FirstAndOnly::COUNT_GREATER_THAN_ONE_ERROR_MESSAGE
+    end
   end
 
   module FirstAndOnly
-    class CountNotOne < StandardError
-      def initialize
-        super("Expected the count to be 1.")
-      end
-    end
+    CountNotOne = Class.new(StandardError)
+    CountZero = Class.new(CountNotOne)
+    CountGreaterThanOne = Class.new(CountNotOne)
+
+    COUNT_ZERO_ERROR_MESSAGE = 'Expected the count to be 1, was 0.'.freeze
+    COUNT_GREATER_THAN_ONE_ERROR_MESSAGE = 'Expected the count to be 1, was greater than 1.'.freeze
   end
 end

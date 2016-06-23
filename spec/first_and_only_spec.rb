@@ -9,8 +9,8 @@ describe "Enumerable#first_and_only!" do
   shared_examples_for "it_is_empty" do
     specify do
       expect { subject.first_and_only! }.to raise_error(
-        Enumerable::FirstAndOnly::CountNotOne,
-        "Expected the count to be 1."
+        Enumerable::FirstAndOnly::CountZero,
+        "Expected the count to be 1, was 0."
       )
     end
   end
@@ -20,8 +20,8 @@ describe "Enumerable#first_and_only!" do
       fail "bad example" if subject.first(2).count < 2
 
       expect { subject.first_and_only! }.to raise_error(
-        Enumerable::FirstAndOnly::CountNotOne,
-        "Expected the count to be 1."
+        Enumerable::FirstAndOnly::CountGreaterThanOne,
+        "Expected the count to be 1, was greater than 1."
       )
     end
   end
